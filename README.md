@@ -1,5 +1,18 @@
 # seq2seq_chatbot
 
+## 环境依赖 ##
+
+| 程序         | 版本      |
+| ---------- | ------- |
+| python     | 3.52    |
+| Tensorflow | 1.10.0  |
+| CUDA       | 9.0.103 |
+| cuDNN      | 7.0     |
+
+
+
+## Run
+
 - **预料获取**
 
   1. `wget https://lvzhe.oss-cn-beijing.aliyuncs.com/dgk_shooter_min.conv.zip`
