@@ -14,8 +14,8 @@ class WordSequence(object):
     END=3
     word_dict={}
     def __init__(self,
-                word_vec_dic='sgns.target.word-word.dynwin5.thr10.neg5.dim300.iter5', #百度百科中文词向量  https://github.com/Embedding/Chinese-Word-Vectors
-                embedding_dim=300
+                # word_vec_dic='sgns.target.word-word.dynwin5.thr10.neg5.dim300.iter5', #百度百科中文词向量  https://github.com/Embedding/Chinese-Word-Vectors
+                # embedding_dim=300
                 ):
         #初始化字典
         self.word_dict={
@@ -26,7 +26,7 @@ class WordSequence(object):
         }
         self.fited=False
         self.word_vec_dic=word_vec_dic
-        self.embedding_dim=embedding_dim
+        # self.embedding_dim=embedding_dim
         
         
     def to_index(self,word):
@@ -95,26 +95,26 @@ class WordSequence(object):
         self.fited=True
 
         #采用预训练好的部分词向量
-        embeddings_index={}
-        print("正在加载预训练词向量……")
-        with open(self.word_vec_dic, 'rb') as f:
-            for line in f:
-                values = line.decode('utf-8').split(' ')
-                word = values[0]
-                embedding=values[1:301]
-                embeddings_index[word]=embedding
-        print("预训练词向量加载完毕。")
-        nb_words = len(self.word_dict)
+        # embeddings_index={}
+        # print("正在加载预训练词向量……")
+        # with open(self.word_vec_dic, 'rb') as f:
+        #     for line in f:
+        #         values = line.decode('utf-8').split(' ')
+        #         word = values[0]
+        #         embedding=values[1:301]
+        #         embeddings_index[word]=embedding
+        # print("预训练词向量加载完毕。")
+        # nb_words = len(self.word_dict)
 
-        self.word_embedding_matrix=np.zeros((nb_words,self.embedding_dim),dtype=np.float32)
-        for word,i in self.word_dict.items():
-            if word in embeddings_index:
-                self.word_embedding_matrix[i] = embeddings_index[word]
-            else:
-                new_embedding = np.array(np.random.uniform(-1,1,self.embedding_dim))
-                embeddings_index[word] = new_embedding
-                self.word_embedding_matrix[i] = embeddings_index[word]
-        print('词向量映射完成')        
+        # self.word_embedding_matrix=np.zeros((nb_words,self.embedding_dim),dtype=np.float32)
+        # for word,i in self.word_dict.items():
+        #     if word in embeddings_index:
+        #         self.word_embedding_matrix[i] = embeddings_index[word]
+        #     else:
+        #         new_embedding = np.array(np.random.uniform(-1,1,self.embedding_dim))
+        #         embeddings_index[word] = new_embedding
+        #         self.word_embedding_matrix[i] = embeddings_index[word]
+        # print('词向量映射完成')        
 
     def showdict(self):
         assert self.fited
